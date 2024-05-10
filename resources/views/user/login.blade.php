@@ -1,6 +1,13 @@
 @extends('layouts.user')
 
+
 @section('content')
+<style>
+    .inputType{
+        height: 50px;
+        width: 300px;
+    }
+</style>
     <div class="d-flex align-items-center justify-content-center min-vh-100 flex-column">
         @if (\Session::has('success'))
             <div class="alert alert-success fixed-top" id="success-alert">
@@ -28,8 +35,10 @@
                         <h1>Login</h1>
                     </div>
                     @csrf
-                    <input type="email" name="email" id="email" placeholder="Email address">
-                    <input type="password" name="password" id="password" placeholder="password">
+                    <input type="email" class="inputType" name="email" id="email" placeholder="Email address">
+                    <br>
+                    <input type="password" class="inputType" name="password" id="password" placeholder="password">
+                    <br>
                     <input type="submit" value="Login" class="btn btn-success">
                     <a href="{{ route('user.create') }}">Create an account</a>
                 </div>
