@@ -23,7 +23,7 @@
 
     <div class="error-container w-25 m-3">
         @if (\Session::has('success'))
-            <div class="alert alert-success alert-dismissible fade show m-3" id="success-alert">
+            <div class="alert alert-success alert-block alert-dismissible fade show m-3" id="success-alert">
                 <button type="button" class="close" data-dismiss="alert">x</button>
                 <strong> {!! \Session::get('success') !!} </strong> Login using your email and password
             </div>

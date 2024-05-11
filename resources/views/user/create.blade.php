@@ -1,21 +1,34 @@
 @extends('layouts.user')
 
 @section('content')
+    <style>
+        .error-container {
 
-    <div class="d-flex align-items-center justify-content-center min-vh-100 flex-column">
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            top:0;
+            right:0;
+        }
+    </style>
+    <div class="error-container w-25 m-3">
         @if ($errors->any())
-            <div class="alert alert-danger" role="alert">
                 {!! implode(
                     '',
                     $errors->all("
+                                <div class='alert alert-danger alert-dismissible fade show m-3'>
                                     <p><strong>:message</strong>
+                                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                        <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>
                                 "),
                 ) !!}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
         @endif
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center min-vh-100 flex-column">
+        
         <form action="{{ route('user.store') }}" method="POST">
             @csrf
             <div class="d-flex align-items-center justify-content-center flex-column bg-white rounded p-lg-5">
@@ -40,14 +53,6 @@
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                         name="password" required autocomplete="current-password" 
                         value="{{ old('password') }}">
-
-                </div>
-                <div class="d-flex justify-content-center flex-column">
-                    <div><small>Atleast 6 characters long</small></div>
-                    <div><small>Atleast one lower case letter</small></div>
-                    <div><small>Atleast one upper case letter</small></div>
-                    <div><small>Atleast one special character</small></div>
-                    <div><small>Atleast one digit</small></div>
                 </div>
 
                 <div class="form-group">
