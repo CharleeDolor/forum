@@ -1,5 +1,26 @@
 @extends('layouts.user')
 
 @section('content')
-<h1>Bawal</h1>
-<a href="{{route('user.login')}}">You must Login first</a>
+<style>
+    p.text-secondary{
+        font-size: 10rem;
+        line-height: 0.82;
+    }
+</style>
+<div class="container-fluid w-100 h-100 d-flex align-items-center justify-content-center flex-column p-0">
+    <div class="w-100 h-50 d-flex justify-content-center align-items-end">
+        <p class="m-0 text-secondary">404</p>
+    </div>
+    <div class="w-100 h-50">
+        <div class=" w-100 h-100 bg-secondary p-0 m-0 d-flex flex-column align-items-center">
+            <p class="h1 mt-4 text-light">Sorry, Page Not Found</p>
+            <p class="text-center p-2 text-light">The page you have requested could not found.</p>
+            <div>
+                <a class="btn btn-info" href="{{route('user.login')}}">Go back</a>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+</div>
