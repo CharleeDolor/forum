@@ -30,7 +30,7 @@
                  left: 0;
                 width: 100%;
                 height: 100%; 
-                background-color: rgba(137, 196, 244, 0.2); 
+                background-color: rgba(255, 255, 255, 0.2); 
                 z-index: -1;
                 }
             }
@@ -66,7 +66,7 @@
             width: 100%;
             margin-left: 700px; 
             text-align: center;
-            background-color: rgba(137, 196, 244, 0.2); 
+            background-color: rgba(255, 255, 255, 0.2); 
         }
 
         .login-form h1 {
@@ -77,7 +77,7 @@
         .login-form a {
             margin-top: 15px;
             display: block;
-            color: #FFFFFF;
+            color: #000000;
             font-weight: bold;
             text-decoration: none;
         }
@@ -85,26 +85,31 @@
         
         .login-form a:hover {
             text-decoration: underline;
-            
+            transform: scale(1.1); 
+             color: black; 
+             
         }
 
         .btn-success {
-            width: 100%;
-            padding: 15px;
-            border-radius: 4px;
+            width: 80%;
+            padding: 10px;
+            border-radius: 15px;
             font-size: 18px;
-            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-            background-color: #007BFF;
+            box-shadow: rgba(45, 35, 66, 0.5) 0 2px 4px, rgba(45, 35, 66, 0.5) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            background-color: #066886;
             border: none;
             color: white;
             cursor: pointer;
             border: 1px solid #000000;
-}
+            transition: all 0.3s ease; 
+        }
 
         .btn-success:hover {
             background: linear-gradient(to bottom, #04bade, white);
             color: black;
             border: 1px solid #0077B6;
+            transform: scale(1.1);
+            border-radius: 5rem;
         }
 
         .close {
