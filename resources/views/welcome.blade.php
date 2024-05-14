@@ -23,6 +23,7 @@
             background-size: cover;
             background-position: center;
             z-index: -1;
+            filter: blur(3px); 
         }
         .background-image::before {
             content: '';
