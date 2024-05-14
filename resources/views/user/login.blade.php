@@ -12,6 +12,30 @@
             font-family: 'Arial', sans-serif;
         }
 
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.pinimg.com/originals/65/79/4d/65794da1ce3e5e3537a281ad6eaba286.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            overflow: hidden;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                 left: 0;
+                width: 100%;
+                height: 100%; 
+                background-color: rgba(137, 196, 244, 0.2); 
+                z-index: -1;
+                }
+            }
+
+
         .inputType {
             height: 50px;
             width: 100%;
@@ -36,28 +60,32 @@
         .login-container {
             background: white;
             border-radius: 10px;
-            padding: 40px;
+            padding: 60px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 100%;
-            margin-left: 800px; 
+            margin-left: 700px; 
             text-align: center;
+            background-color: rgba(137, 196, 244, 0.2); 
         }
 
         .login-form h1 {
             margin-bottom: 30px;
-            color: #007BFF;
+            color: #FFFFFF;
         }
 
         .login-form a {
             margin-top: 15px;
             display: block;
-            color: #007BFF;
+            color: #FFFFFF;
+            font-weight: bold;
             text-decoration: none;
         }
-
+        
+        
         .login-form a:hover {
             text-decoration: underline;
+            
         }
 
         .btn-success {
@@ -70,13 +98,13 @@
             border: none;
             color: white;
             cursor: pointer;
-            border: 2px solid #000000;
+            border: 1px solid #000000;
 }
- 
 
         .btn-success:hover {
             background: linear-gradient(to bottom, #04bade, white);
             color: black;
+            border: 1px solid #0077B6;
         }
 
         .close {
