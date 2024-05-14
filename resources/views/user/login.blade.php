@@ -40,6 +40,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 100%;
+            margin-left: 800px; 
             text-align: center;
         }
 
