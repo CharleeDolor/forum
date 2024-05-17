@@ -16,19 +16,28 @@
             </thead>
             <tbody>
                 <!-- Loop through all the posts -->
-                @foreach($posts as $post)
+                @foreach ($posts as $post)
                     <tr>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->name }}</td>
                         <td>{{ $post->created_at->format('M d, Y H:i:s') }}</td>
                         <td>
                             <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary mr-2 btn-sm">View</a>
-                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-secondary mr-2 btn-sm">Edit</a>
-                            <form action="{{ route('posts.delete', $post->id) }}" method="POST" style="display:inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger mr-2 btn-sm" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
-                            </form>
+
+                            @if (Auth::user()->can('edit posts'))
+                                <a href="{{ route('posts.edit', $post->id) }}"
+                                    class="btn btn-secondary mr-2 btn-sm">Edit</a>
+                            @endif
+
+                            @if (Auth::user()->can('delete posts'))
+                                <form action="{{ route('posts.delete', $post->id) }}" method="POST" style="display:inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mr-2 btn-sm"
+                                        onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+                                </form>
+                            @endif
+
                         </td>
                     </tr>
                 @endforeach

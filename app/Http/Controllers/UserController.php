@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -40,11 +42,14 @@ class UserController extends Controller
             'password.regex' => 'The password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        // assign user role to newly created user account
+        $user->assignRole('user');
         
         return redirect()->route('user.login')->with(['message', 'User registered successfully'], 201);
     }

@@ -8,11 +8,18 @@
         <p><strong>Author:</strong> {{ $post->user->name }}</p>
         <p><strong>Created At:</strong> {{ $post->created_at->format('M d, Y H:i:s') }}</p>
         <p>{{ $post->body }}</p>
-        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
-        <form action="{{ route('posts.delete', $post->id) }}" method="POST" style="display:inline">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
-        </form>
+        @if (Auth::user()->can('edit posts'))
+            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
+        @endif
+
+        @if (Auth::user()->can('delete posts'))
+            <form action="{{ route('posts.delete', $post->id) }}" method="POST" style="display:inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+            </form>
+        @endif
+        
+        
     </div>
 @endsection
