@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     //
-    public function doLogin(Request $request)
+    public function login(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
@@ -22,16 +22,19 @@ class AuthController extends Controller
 
         if (Auth::attempt($user_data)) {
 
-            $request->user()->tokens()->delete();
-            $request->session()->regenerate();
+            /** @var \App\Models\User $user **/
+            $user = Auth::user();
+            $token = $user->createToken('token-name')->plainTextToken;
 
-            return redirect()->route('posts.home');
+            return response()->json(['token' => $token], 201);
         } else {
-            return redirect()->route('user.login')->with('error', 'Wrong Login details');
+
+            // Authentication failed
+            return response()->json(['message' => 'Invalid username or password'], 401);
         }
     }
 
-    public function doLogout(Request $request){
+    public function logout(Request $request){
         
         $request->session()->invalidate();
         $request->session()->regenerateToken();
