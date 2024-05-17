@@ -23,16 +23,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //auth controller routes for login and logout
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('/logout', [AuthController::class, 'logout']);
 
 // route to save user details
 Route::post('/register', [UserController::class, 'store']);
 
+// route to get all posts
+Route::get('/home', [PostController::class, 'index']);
+
 // route to save post details
-Route::post('/create', [PostController::class, 'store'])->middleware('auth:sanctum');
+Route::post('/create', [PostController::class, 'store']);
 
 // route to edit post details by id
-Route::put('/update/{id}', [PostController::class, 'update'])->middleware('auth:sanctum');
+Route::put('/update/{id}', [PostController::class, 'update']);
 
 // route to deelte post by id
-Route::delete('/posts/delete/{id}', [PostController::class, 'destroy'])->middleware('auth:sanctum');
+Route::delete('/delete/{id}', [PostController::class, 'destroy']);

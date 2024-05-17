@@ -13,7 +13,9 @@ class PostController extends Controller
         // Retrieve posts from the database
         $posts = Post::all();
 
-        return response()->json(['data' => $posts], 201);
+        return response()->json([
+            'data' => $posts
+        ], 200);
     }
 
     public function store(Request $request){
@@ -23,11 +25,10 @@ class PostController extends Controller
         $post->body = $request->body;
         $post->user_id = rand(1, 5);
 
-
         $post->save();
 
         return response()->json([
-            'data' => $post, 
+            'data' => $post,
             'message' => 'Post created', 
             'method' => 'POST'], 
         201);
@@ -39,7 +40,7 @@ class PostController extends Controller
         return response()->json([
             'data' => $post,
             'method' => 'GET'
-        ], 201);
+        ], 200);
     }
 
     public function edit($id){

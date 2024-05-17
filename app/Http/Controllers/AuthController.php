@@ -21,7 +21,6 @@ class AuthController extends Controller
         );
 
         if (Auth::attempt($user_data)) {
-
             /** @var \App\Models\User $user **/
             $user = Auth::user();
             $token = $user->createToken('token-name')->plainTextToken;
@@ -35,10 +34,9 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request){
-        
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        Auth::logout();
 
-        return response()->json(['message' => 'logged out'], 201);
+        $request->user()->tokens()->delete();
+        return response()->json(['message' => 'logged out'], 200);
     }
 }
