@@ -51,6 +51,6 @@ class UserController extends Controller
         // assign user role to newly created user account
         $user->assignRole('user');
         
-        return redirect()->route('user.login')->with(['message', 'User registered successfully'], 201);
+        return response()->json(['message' => 'Account created successfully.'], 201);
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,12 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 // route to save user details
 Route::post('/register', [UserController::class, 'store']);
+
+// route to save post details
+Route::post('/create', [PostController::class, 'store'])->middleware('auth:sanctum');
+
+// route to edit post details by id
+Route::put('/update/{id}', [PostController::class, 'update'])->middleware('auth:sanctum');
+
+// route to deelte post by id
+Route::delete('/posts/delete/{id}', [PostController::class, 'destroy'])->middleware('auth:sanctum');
