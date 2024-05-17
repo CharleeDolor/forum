@@ -8,8 +8,8 @@
         <table class="table-striped">
             <thead>
                 <tr>
-                    <th width="25%">Title</th>
-                    <th width="30%">Author</th>
+                    <th width="30%">Title</th>
+                    <th width="25%">Author</th>
                     <th width="20%">Created At</th>
                     <th width="25%">Actions</th>
                 </tr>
@@ -18,9 +18,17 @@
                 <!-- Loop through all the posts -->
                 @foreach ($posts as $post)
                     <tr>
-                        <td>{{ $post->title }}</td>
-                        <td>{{ $post->name }}</td>
-                        <td>{{ $post->created_at->format('M d, Y H:i:s') }}</td>
+                        <td style="padding: 10px;">
+                            <div style="display: flex; align-items: center;">
+                                @if(isset($imageMap[$post->title]))
+                                        <img src="{{ asset($imageMap[$post->title]) }}" alt="Image" style="max-width: 100px; max-height: 100px; margin-right: 10px;">
+                                    @endif
+                                    <span>{{ $post->title }}</span>
+                            </div>
+                        </td>
+                        <td style="padding: 10px;">{{ $post->title }}</td>
+                        <td style="padding: 10px;">{{ $post->name }}</td>
+                        <td style="padding: 10px;">{{ $post->created_at->format('M d, Y H:i:s') }}</td>
                         <td>
                             <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary mr-2 btn-sm">View</a>
 
