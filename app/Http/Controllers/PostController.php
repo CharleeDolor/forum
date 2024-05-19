@@ -14,7 +14,7 @@ class PostController extends Controller
         $posts = Post::all();
 
         return response()->json([
-            'data' => $posts
+            'posts' => $posts
         ], 200);
     }
 
@@ -28,7 +28,7 @@ class PostController extends Controller
         $post->save();
 
         return response()->json([
-            'data' => $post,
+            'post' => $post,
             'message' => 'Post created', 
             'method' => 'POST'], 
         201);
@@ -38,7 +38,7 @@ class PostController extends Controller
         // the firstOrFail() method will throw an exception if the post is not found
         $post = Post::with('user')->where('id', $id)->firstorFail();
         return response()->json([
-            'data' => $post,
+            'post' => $post,
             'method' => 'GET'
         ], 200);
     }
@@ -49,7 +49,7 @@ class PostController extends Controller
         try {
             //code...
             return response()->json([
-                'data' => $post,
+                'post' => $post,
                 'message' => 'Post found',
                 'method' => 'GET'
             ], 201);
@@ -73,7 +73,7 @@ class PostController extends Controller
         try {
             //code...
             return response()->json([
-                'data' => $post,
+                'post' => $post,
                 'message' => 'Post edited successfully',
                 'method' => 'PUT'
             ], 201);
@@ -92,7 +92,7 @@ class PostController extends Controller
         try {
             //code...
             return response()->json([
-                'data' => $post,
+                'post' => $post,
                 'message' => 'Post deleted successfully',
                 'method' => 'DELETE'
             ], 201);

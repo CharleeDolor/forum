@@ -31,6 +31,9 @@ Route::post('/register', [UserController::class, 'store']);
 // route to get all posts
 Route::get('/home', [PostController::class, 'index']);
 
+// route to get a post by id
+Route::get('/show/{id}', [PostController::class, 'show']);
+
 // route to save post details
 Route::post('/create', [PostController::class, 'store']);
 
