@@ -2,6 +2,7 @@
 
 @section('content')
     <style>
+        /*styles*/
         body {
             display: flex;
             justify-content: center;
