@@ -52,13 +52,13 @@ class PostController extends Controller
                 'post' => $post,
                 'message' => 'Post found',
                 'method' => 'GET'
-            ], 201);
+            ], 200);
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json([
                 'message' => 'Something went wrong. Please try again',
                 'method' => 'GET'
-            ], 201);
+            ], 200);
         }
 
     }
@@ -76,12 +76,12 @@ class PostController extends Controller
                 'post' => $post,
                 'message' => 'Post edited successfully',
                 'method' => 'PUT'
-            ], 201);
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Something went wrong. Please try again',
                 'method' => 'PUT'
-            ], 201);
+            ], 200);
         }
     }
 
@@ -95,12 +95,12 @@ class PostController extends Controller
                 'post' => $post,
                 'message' => 'Post deleted successfully',
                 'method' => 'DELETE'
-            ], 201);
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Something went wrong. Please try again',
                 'method' => 'DELETE'
-            ], 201);
+            ], 200);
         }
     }
 
