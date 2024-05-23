@@ -25,6 +25,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
+Route::get('/user/permissions', [AuthController::class, 'getPermissions']);
+
 // route to save user details
 Route::post('/register', [UserController::class, 'store']);
 
